@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  min-height: 520px;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, .7) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 78%, rgba(255, 255, 255, .5) 0 1px, transparent 2px),
+    linear-gradient(135deg, #ffc7d1 0%, #f48fa8 48%, #c85b85 100%);
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+body:before,
+body:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+body:before {
+  width: 360px;
+  height: 360px;
+  top: -150px;
+  right: -90px;
+  border: 2px solid rgba(255, 255, 255, .28);
+  box-shadow: 0 0 0 24px rgba(255, 255, 255, .08), 0 0 0 48px rgba(255, 255, 255, .05);
+}
+
+body:after {
+  width: 230px;
+  height: 230px;
+  bottom: -130px;
+  left: -70px;
+  background: rgba(255, 255, 255, .12);
+}
+
+input#open {
+  display: none;
+}
+
+.valentines-day-card {
+  position: relative;
+  width: 300px;
+  height:300px;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  transform: perspective(2500px) scale(1.08);
+  transition: transform .3s;
+  filter: drop-shadow(0 26px 24px rgba(102, 25, 58, .25));
+}
+
+.card-front {
+  position: relative;
+  background: linear-gradient(135deg, #fff8f8, #ffe9ef);
+  width: 300px;
+  height:300px;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(105, 22, 53, .12), 30px 0 50px rgba(73, 13, 36, .28);
+  transition: transform .8s cubic-bezier(.2, .75, .25, 1), box-shadow .8s ease;
+  border-radius: 8px 4px 4px 8px;
+  backface-visibility: visible;
+}
+
+.card-front:before {
+  content:"";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(145deg, #ef6684, #bd315f);
+  top: 10px;
+  left: 10px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 5px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .2);
+}
+
+.card-inside {
+  position: absolute;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(255, 255, 255, .75) 0 2px, transparent 3px),
+    linear-gradient(145deg, #fff9fa, #ffe8ef);
+  width: 300px;
+  height:300px;
+  overflow: hidden;
+  z-index:-1;
+  left:0;
+  top:0;
+  border-radius: 8px;
+  box-shadow: inset 100px 20px 100px rgba(105, 22, 53, .13), 100px 20px 100px rgba(73, 13, 36, .12);
+}
+
+.card-inside:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 10px;
+  background: linear-gradient(90deg, rgba(105, 22, 53, .18), transparent);
+  pointer-events: none;
+}
+
+.open {
+  position: absolute;
+  width: 300px;
+  height:300px;
+  left:0;
+  top:0;
+  background-color: transparent;
+  z-index:6;
+  cursor: pointer;
+}
+
+#open:checked ~ .card-front {
+  transform: rotateY(-155deg);
+  box-shadow: inset 100px 20px 100px rgba(105, 22, 53, .08), 30px 0 50px rgba(73, 13, 36, .12);
+}
+
+#open:checked ~ .open {
+  pointer-events: none;
+}
+
+#open:checked ~ .card-front:before {
+  z-index:5;
+  background:
+    linear-gradient(rgba(255, 248, 248, .18), rgba(255, 233, 239, .18)),
+    url("image.webp") center / cover no-repeat;
+  width:260px;
+  height:260px;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid #fff8f8;
+  border-radius: 5px;
+  box-shadow: inset 0 0 22px rgba(105, 22, 53, .16), 30px 0 50px rgba(73, 13, 36, .12);
+}
+.note {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background: rgba(255, 248, 249, .94);
+  top:75px;
+  left:50px;
+  color: #6d2944;
+  font-size: 21px;
+  line-height: 1.55;
+  padding: 24px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(190, 54, 92, .12);
+  border-radius: 4px;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 18px rgba(99, 24, 52, .14);
+}
+
+.note:before, .note:after {
+  position: absolute;
+  content:"";
+  background-color: #c92e5d;
+  width: 40px;
+  height:40px;
+}
+
+.note:before {
+  transform: rotate(-45deg);
+  top:-20px;
+  left:80px;
+}
+
+.note:after {
+  border-radius:50%;
+  top:-35px;
+  left:65px;
+  box-shadow:30px 0 #c92e5d;
+}
+.inside-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100%;
+  padding: 14px 18px 10px;
+  text-align: center;
+}
+
+.inside-kicker {
+  margin-bottom: 5px;
+  color: #b94b6d;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.text-one {
+  position: relative;
+  width: 100%;
+  color: #7d2c4b;
+  font-size: 20px;
+  text-align: center;
+}
+
+.text-one span {
+  display: block;
+  color: #c23865;
+  font-size: 23px;
+  line-height: 1.2;
+  text-shadow: 0 3px 10px rgba(194, 56, 101, .16);
+}
+
+.reasons-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 9px 0 6px;
+  color: #8f3b59;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: .2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.reasons-title:before,
+.reasons-title:after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(194, 56, 101, .35));
+}
+
+.reasons-title:after {
+  background: linear-gradient(90deg, rgba(194, 56, 101, .35), transparent);
+}
+
+.love-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  width: 100%;
+  margin: 6px 0 8px;
+}
+
+.reason {
+  display: flex;
+  height: 50px;
+  min-height: 0;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border: 1px solid rgba(194, 56, 101, .2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .68);
+  color: #7d2c4b;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(125, 44, 75, .06);
+  transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.reason strong {
+  display: none;
+}
+
+.reason-emoji {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI Emoji', sans-serif;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.reason-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.love-reasons input:focus-visible + .reason {
+  outline: 2px solid #b72f5c;
+  outline-offset: 2px;
+}
+
+.reason:hover,
+.love-reasons input:checked + .reason {
+  border-color: #df4771;
+  background: #fff1f4;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(194, 56, 101, .14);
+}
+
+.love-reasons input:checked + .reason .reason-label {
+  display: none;
+}
+
+.love-reasons input:checked + .reason .reason-emoji {
+  display: flex;
+  animation: emoji-pop .35s ease-out;
+}
+
+@keyframes emoji-pop {
+  0% {
+    opacity: 0;
+    transform: scale(.45) rotate(-12deg);
+  }
+  70% {
+    transform: scale(1.15) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+#surprise,
+#forgive,
+.love-reasons input {
+  display: none;
+}
+
+.surprise-button,
+.forgive-button {
+  display: inline-block;
+  min-width: 126px;
+  padding: 7px 12px;
+  border: 1px solid #dc5a7c;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .35);
+  color: #b72f5c;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: .15px;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.surprise-button:hover,
+.forgive-button:hover {
+  background: #df4771;
+  color: #fff8f8;
+  transform: translateY(-2px);
+}
+
+.surprise-button:focus-visible,
+.forgive-button:focus-visible {
+  outline: 2px solid #b72f5c;
+  outline-offset: 3px;
+}
+
+.secret-message {
+  max-height: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  color: #9d4663;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  line-height: 1.35;
+  opacity: 0;
+  text-shadow: 0 1px rgba(255, 255, 255, .6);
+  transition: max-height .5s ease, margin .5s ease, opacity .5s ease;
+}
+
+#surprise:checked ~ .secret-message {
+  max-height: 45px;
+  margin-top: 10px;
+  opacity: 1;
+}
+
+.forgive-button {
+  margin-top: 7px;
+  font-family: Georgia, serif;
+  font-size: 10px;
+}
+
+.forgive-button:hover,
+#forgive:checked + .forgive-button {
+  background: #c23865;
+  color: #fff8f8;
+  transform: translateY(-2px);
+}
+
+.forgive-message {
+  display: none;
+  margin-top: 5px;
+  color: #b72f5c;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-style: italic;
+}
+
+#forgive:checked ~ .forgive-message {
+  display: block;
+}
+
+.card-inside:has(#forgive:checked) .heart {
+  opacity: .8;
+  filter: drop-shadow(0 0 6px rgba(223, 71, 113, .65));
+}
+
+.heart {
+  position: absolute;
+  background-color: #df4771;
+  height: 42px;
+  width: 42px;
+  top: auto;
+  right: 14px;
+  bottom: 12px;
+  z-index: 1;
+  opacity: .28;
+  transform: rotate(-45deg) scale(.7);
+  animation: .8s beat infinite;
+}
+  
+.heart:before, .heart:after {
+  content:"";
+  background-color: #df4771;
+  border-radius:50%;
+  height: 42px;
+  width: 42px;
+  position: absolute;
+  }
+  
+.heart:before {
+  top:-21px;
+  left:0;
+}
+  
+.heart:after {
+  left:21px;
+  top:0;
+}
+
+.smile {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-color: #333;
+  z-index: 0;
+  border-radius: 0 0 100px 100px;
+  left: 135px;
+  bottom: 8px;
+  opacity: .45;
+  overflow: hidden;
+}
+
+.smile:before {
+  content:"";
+  position: absolute;
+  border-radius:50%;
+  width:20px;
+  height:20px;
+  background-color: #030202;
+  top:5px;
+  left:5px;
+}
+
+.eyes {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #333;
+  width:10px;
+  height:10px;
+  z-index: 0;
+  left: 165px;
+  bottom: 23px;
+  opacity: .45;
+  box-shadow: -40px 0 #333;
+  transform-origin: 50%;
+  animation: close 2s infinite;
+}
+
+@keyframes close {
+    0%, 100% {
+        transform: scale(1, .05);
+    }
+    5%, 95% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes beat {
+  0%, 40%, 100% {
+    transform: scale(1) rotate(-45deg);
+  }
+  25%, 60% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    min-height: 420px;
+  }
+
+  .valentines-day-card,
+  .card-front,
+  .card-inside,
+  .open {
+    width: min(300px, 82vw);
+    height: min(300px, 82vw);
+  }
+
+  .valentines-day-card {
+    transform: perspective(2500px) scale(.98);
+  }
+
+  .card-front:before {
+    width: calc(min(300px, 82vw) - 20px);
+    height: calc(min(300px, 82vw) - 20px);
+  }
+
+  .note {
+    width: 66.66%;
+    height: 50%;
+    top: 25%;
+    left: 16.66%;
+    font-size: clamp(15px, 5vw, 21px);
+  }
+
+  .text-one {
+    width: 100%;
+    font-size: clamp(18px, 6vw, 25px);
+  }
+}
